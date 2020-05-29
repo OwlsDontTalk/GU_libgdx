@@ -1,18 +1,18 @@
 package com.dune.game.core;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-
 public class GameController {
     private BattleMap map;
+    private ProjectilesController projectilesController;
     private Tank tank;
-    private Projectile projectile;
-
-    public Projectile getProjectile() { return projectile;}
 
     public Tank getTank() {
         return tank;
     }
+
+    public ProjectilesController getProjectilesController() {
+        return projectilesController;
+    }
+
 
     public BattleMap getMap() {
         return map;
@@ -20,13 +20,20 @@ public class GameController {
 
     // Инициализация игровой логики
     public GameController() {
-        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("game.pack"));
-        this.map = new BattleMap(atlas);
-        this.tank = new Tank(atlas,200, 200);;
-        this.projectile = new Projectile(atlas);
+        Assets.getInstance().loadAssets();
+        this.map = new BattleMap();
+        this.projectilesController = new ProjectilesController(this);
+        this.tank = new Tank(this, 200, 200);;
     }
 
     public void update(float dt) {
         tank.update(dt);
+        projectilesController.update(dt);
+        checkCollisions(dt);
     }
+
+    public void checkCollisions(float dt){
+        map.checkResourceHarvesting(tank);
+    }
+
 }
