@@ -11,11 +11,11 @@ public abstract class GameObject {
         return position;
     }
 
-    public int getCellX(){
+    public int getCellX() {
         return (int) (position.x / BattleMap.CELL_SIZE);
     }
 
-    public int getCellY(){
+    public int getCellY() {
         return (int) (position.y / BattleMap.CELL_SIZE);
     }
 
