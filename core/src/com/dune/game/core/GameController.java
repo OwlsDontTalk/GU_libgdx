@@ -1,8 +1,5 @@
 package com.dune.game.core;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-
 public class GameController {
     private BattleMap map;
     private ProjectilesController projectilesController;
@@ -11,11 +8,9 @@ public class GameController {
     public TanksController getTanksController() {
         return tanksController;
     }
-
     public ProjectilesController getProjectilesController() {
         return projectilesController;
     }
-
     public BattleMap getMap() {
         return map;
     }
@@ -26,7 +21,7 @@ public class GameController {
         this.map = new BattleMap();
         this.projectilesController = new ProjectilesController(this);
         this.tanksController = new TanksController(this);
-        this.tanksController.setup(200, 200, Tank.Owner.PLAYER);
+        this.tanksController.setup(500, 500, Tank.Owner.PLAYER);
         this.tanksController.setup(400, 400, Tank.Owner.PLAYER);
     }
 
