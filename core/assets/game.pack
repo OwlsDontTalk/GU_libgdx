@@ -10,23 +10,37 @@ grass
   orig: 80, 80
   offset: 0, 0
   index: -1
-tankanim
+tankcore
   rotate: false
   xy: 84, 2
   size: 320, 64
   orig: 320, 64
   offset: 0, 0
   index: -1
-turret
+tankanim
   rotate: false
   xy: 406, 2
+  size: 320, 64
+  orig: 320, 64
+  offset: 0, 0
+  index: -1
+turret
+  rotate: false
+  xy: 728, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tank
   rotate: false
-  xy: 472, 2
+  xy: 794, 2
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+harvester
+  rotate: false
+  xy: 860, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
