@@ -3,65 +3,65 @@ images1.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-grass
+resource
   rotate: false
   xy: 2, 2
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
-tankcore
+grass
   rotate: false
   xy: 84, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+tankcore
+  rotate: false
+  xy: 166, 2
   size: 320, 64
   orig: 320, 64
   offset: 0, 0
   index: -1
 tankanim
   rotate: false
-  xy: 406, 2
+  xy: 488, 2
   size: 320, 64
   orig: 320, 64
   offset: 0, 0
   index: -1
 turret
   rotate: false
-  xy: 728, 2
+  xy: 810, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tank
   rotate: false
-  xy: 794, 2
+  xy: 876, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 harvester
   rotate: false
-  xy: 860, 2
+  xy: 942, 2
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-resource
-  rotate: false
-  xy: 2, 84
-  size: 32, 32
-  orig: 32, 32
-  offset: 0, 0
-  index: -1
 bullet
   rotate: false
-  xy: 36, 84
+  xy: 2, 84
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 progressbar
   rotate: false
-  xy: 84, 68
+  xy: 20, 84
   size: 60, 8
   orig: 60, 8
   offset: 0, 0
