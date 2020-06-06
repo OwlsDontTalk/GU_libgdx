@@ -17,6 +17,7 @@ public class GameController {
     private BattleMap map;
     private PlayerLogic playerLogic;
     private ProjectilesController projectilesController;
+    private AiLogic aiLogic;
     private UnitsController unitsController;
     private Vector2 tmp;
     private Vector2 selectionStart;
@@ -55,6 +56,7 @@ public class GameController {
         this.map = new BattleMap();
         this.projectilesController = new ProjectilesController(this);
         this.unitsController = new UnitsController(this);
+        this.aiLogic = new AiLogic(this);
         prepareInput();
     }
 
@@ -63,9 +65,11 @@ public class GameController {
         ScreenManager.getInstance().getViewport().unproject(mouse);
         unitsController.update(dt);
         playerLogic.update(dt);
+        aiLogic.update(dt);
         projectilesController.update(dt);
         map.update(dt);
         collider.checkCollisions();
+
     }
 
     public boolean isUnitSelected(AbstractUnit abstractUnit) {

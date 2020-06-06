@@ -27,6 +27,15 @@ public abstract class AbstractUnit extends GameObject implements Poolable, Targe
     protected int container;
     protected int containerCapacity;
 
+    public Targetable getTarget() {
+        return target;
+    }
+
+
+    public void setTarget(Targetable target) {
+        this.target = target;
+    }
+
     protected Targetable target;
     protected float minDstToActiveTarget;
 
