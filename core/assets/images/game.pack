@@ -3,65 +3,114 @@ images1.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-resource
+base2
   rotate: false
   xy: 2, 2
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+simpleButton
+  rotate: false
+  xy: 132, 2
+  size: 320, 80
+  orig: 320, 80
+  offset: 0, 0
+  index: -1
+shortButton
+  rotate: false
+  xy: 2, 132
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+resource
+  rotate: false
+  xy: 132, 84
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 grass
   rotate: false
-  xy: 84, 2
+  xy: 132, 166
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
 tankcore
   rotate: false
-  xy: 166, 2
+  xy: 454, 2
   size: 320, 64
   orig: 320, 64
   offset: 0, 0
   index: -1
 tankanim
   rotate: false
-  xy: 488, 2
+  xy: 454, 68
   size: 320, 64
   orig: 320, 64
   offset: 0, 0
   index: -1
 turret
   rotate: false
-  xy: 810, 2
+  xy: 214, 84
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 tank
   rotate: false
-  xy: 876, 2
+  xy: 214, 150
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 harvester
   rotate: false
-  xy: 942, 2
+  xy: 280, 84
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+base1
+  rotate: false
+  xy: 280, 150
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+smButton
+  rotate: false
+  xy: 454, 134
+  size: 120, 32
+  orig: 120, 32
+  offset: 0, 0
+  index: -1
+star16
+  rotate: false
+  xy: 2, 214
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
+selector
+  rotate: false
+  xy: 2, 232
+  size: 16, 16
+  orig: 16, 16
+  offset: 0, 0
+  index: -1
 bullet
   rotate: false
-  xy: 2, 84
+  xy: 20, 214
   size: 16, 16
   orig: 16, 16
   offset: 0, 0
   index: -1
 progressbar
   rotate: false
-  xy: 20, 84
+  xy: 214, 216
   size: 60, 8
   orig: 60, 8
   offset: 0, 0
