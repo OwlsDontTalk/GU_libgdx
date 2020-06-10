@@ -73,13 +73,6 @@ harvester
   orig: 64, 64
   offset: 0, 0
   index: -1
-base1
-  rotate: false
-  xy: 280, 150
-  size: 64, 64
-  orig: 64, 64
-  offset: 0, 0
-  index: -1
 smButton
   rotate: false
   xy: 454, 134
