@@ -33,6 +33,7 @@ public class HarvestersController extends ObjectPool<Harvester> {
     public void update(float dt) {
         for (int i = 0; i < activeList.size(); i++) {
             activeList.get(i).update(dt);
+            activeList.get(i).checkUnloadingZone();
         }
         checkPool();
     }
