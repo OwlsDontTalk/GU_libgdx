@@ -14,9 +14,6 @@ public class Building extends GameObject implements Poolable, Targetable {
         STOCK
     }
 
-    // * * *
-    // * P *
-    //   E
     private BaseLogic ownerLogic;
     private Type buildingType;
     private TextureRegion texture;

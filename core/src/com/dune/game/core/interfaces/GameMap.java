@@ -1,4 +1,4 @@
-package com.dune.game.core;
+package com.dune.game.core.interfaces;
 
 public interface GameMap {
     int getSizeX();

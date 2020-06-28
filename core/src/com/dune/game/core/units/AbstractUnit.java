@@ -12,7 +12,9 @@ import com.dune.game.core.units.types.TargetType;
 import com.dune.game.core.units.types.UnitType;
 import com.dune.game.core.users_logic.BaseLogic;
 import com.dune.game.screens.utils.Assets;
+import lombok.Getter;
 
+@Getter
 public abstract class AbstractUnit extends GameObject implements Poolable, Targetable {
     protected BaseLogic baseLogic;
     protected UnitType unitType;
@@ -34,6 +36,11 @@ public abstract class AbstractUnit extends GameObject implements Poolable, Targe
     protected float moveTimer;
     protected float lifeTime;
     protected float timePerFrame;
+
+    public int getContainer() {
+        return container;
+    }
+
     protected int container;
     protected int containerCapacity;
 

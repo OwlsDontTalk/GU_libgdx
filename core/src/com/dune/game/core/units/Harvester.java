@@ -8,6 +8,17 @@ import com.dune.game.core.users_logic.BaseLogic;
 import com.dune.game.screens.utils.Assets;
 
 public class Harvester extends AbstractUnit {
+    private boolean harvesting;
+    public void setHarvesting(boolean harvesting) {
+        this.harvesting = harvesting;
+    }
+
+    public boolean isHarvesting() {
+        return harvesting;
+    }
+
+
+
     public Harvester(GameController gc) {
         super(gc);
         this.textures = Assets.getInstance().getAtlas().findRegion("tankcore").split(CORE_SIZE, CORE_SIZE)[0];
@@ -19,6 +30,7 @@ public class Harvester extends AbstractUnit {
         this.weapon = new Weapon(4.0f, 1);
         this.hpMax = 500;
         this.unitType = UnitType.HARVESTER;
+        this.harvesting = false;
     }
 
     @Override

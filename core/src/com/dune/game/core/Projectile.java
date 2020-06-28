@@ -48,7 +48,6 @@ public class Projectile extends GameObject implements Poolable {
     }
 
     public void render(SpriteBatch batch) {
-        // batch.draw(texture, position.x - 8, position.y - 8);
     }
 
     public void update(float dt) {

@@ -1,20 +1,7 @@
 package com.dune.game.core;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.FileHandleResolver;
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGeneratorLoader;
-import com.badlogic.gdx.graphics.g2d.freetype.FreetypeFontLoader;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.dune.game.core.interfaces.GameMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,18 +61,6 @@ public class PathFinder {
                         }
                     }
                 }
-//                if (i > 0 && gameMap.isCellPassable(i - 1, j, false)) {
-//                    this.nodes[i][j].neighbors.add(this.nodes[i - 1][j]);
-//                }
-//                if (i < gameMap.getSizeX() - 1 && gameMap.isCellPassable(i + 1, j, false)) {
-//                    this.nodes[i][j].neighbors.add(this.nodes[i + 1][j]);
-//                }
-//                if (j > 0 && gameMap.isCellPassable(i, j - 1, false)) {
-//                    this.nodes[i][j].neighbors.add(this.nodes[i][j - 1]);
-//                }
-//                if (j < gameMap.getSizeY() - 1 && gameMap.isCellPassable(i, j + 1, false)) {
-//                    this.nodes[i][j].neighbors.add(this.nodes[i][j + 1]);
-//                }
             }
         }
 

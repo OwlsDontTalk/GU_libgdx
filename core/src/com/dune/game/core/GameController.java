@@ -1,8 +1,6 @@
 package com.dune.game.core;
 
 import com.badlogic.gdx.*;
-import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
@@ -32,7 +30,6 @@ import java.util.List;
 @Getter
 public class GameController {
     private static final float CAMERA_SPEED = 240.0f;
-
     private BattleMap map;
     private GuiPlayerInfo guiPlayerInfo;
     private PlayerLogic playerLogic;
@@ -53,9 +50,6 @@ public class GameController {
     private List<AbstractUnit> selectedUnits;
     private Stage stage;
 
-//    private Music music;
-//    private Sound sound;
-
     public GameController() {
         this.mouse = new Vector2();
         this.tmp = new Vector2();
@@ -74,8 +68,6 @@ public class GameController {
         this.pointOfView = new Vector2(ScreenManager.HALF_WORLD_WIDTH, ScreenManager.HALF_WORLD_HEIGHT);
         this.buildingsController.setup(3, 3, playerLogic);
         this.buildingsController.setup(14, 8, aiLogic);
-//        this.music = Gdx.audio.newMusic(Gdx.files.internal("1.mp3"));
-//        this.sound = Gdx.audio.newSound(Gdx.files.internal("explosion.wav"));
         createGuiAndPrepareGameInput();
     }
 
@@ -96,10 +88,6 @@ public class GameController {
             map.update(dt);
             collider.checkCollisions();
             particleController.update(dt);
-//        for (int i = 0; i < 5; i++) {
-//            particleController.setup(mouse.x, mouse.y, MathUtils.random(-15.0f, 15.0f), MathUtils.random(-30.0f, 30.0f), 0.5f,
-//                    0.3f, 1.4f, 1, 1, 0, 1, 1, 0, 0, 0.5f);
-//        }
             guiPlayerInfo.update(dt);
         }
         ScreenManager.getInstance().resetCamera();
@@ -233,5 +221,10 @@ public class GameController {
         stage.addActor(guiPlayerInfo);
         stage.addActor(menuGroup);
         skin.dispose();
+    }
+
+
+    public BattleMap getMap() {
+        return map;
     }
 }

@@ -13,7 +13,6 @@ public class DuneGame extends Game {
     private SpriteBatch batch;
 
     // Домашнее задание:
-    // 1. Разобраться с кодом
     // 2. Харвестеры AI должны собирать ресурсы и отвозить на базу
 
     /*

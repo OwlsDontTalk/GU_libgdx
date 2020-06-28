@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.dune.game.core.interfaces.GameMap;
 import com.dune.game.screens.utils.Assets;
 
 public class BattleMap implements GameMap {
@@ -24,13 +25,11 @@ public class BattleMap implements GameMap {
             this.airPassable = true;
             if (MathUtils.random() < 0.1f) {
                 resource = MathUtils.random(1, 3);
-//                this.groundPassable = false;
             }
             resourceRegenerationRate = MathUtils.random(5.0f) - 4.5f;
             if (resourceRegenerationRate < 0.0f) {
                 resourceRegenerationRate = 0.0f;
             } else {
-//                this.groundPassable = false;
                 resourceRegenerationRate *= 20.0f;
                 resourceRegenerationRate += 10.0f;
             }
@@ -81,6 +80,11 @@ public class BattleMap implements GameMap {
 
     public static final int COLUMNS_COUNT = 24;
     public static final int ROWS_COUNT = 16;
+
+    public static int getCellSize() {
+        return CELL_SIZE;
+    }
+
     public static final int CELL_SIZE = 60;
     public static final int MAP_WIDTH_PX = COLUMNS_COUNT * CELL_SIZE;
     public static final int MAP_HEIGHT_PX = ROWS_COUNT * CELL_SIZE;
@@ -214,6 +218,24 @@ public class BattleMap implements GameMap {
                 cells[i][j].update(dt);
             }
         }
+    }
+
+    public Vector2 getClosestResourceCell(Vector2 position){
+        Vector2 tmp = new Vector2(900, 900);
+        float distance = 1000.0f;
+
+        for (int i = 0; i < COLUMNS_COUNT; i++) {
+            for (int j = 0; j < ROWS_COUNT; j++) {
+                if(cells[i][j].resource > 0){
+                    Vector2 tmp2 = new Vector2( i * CELL_SIZE, j * CELL_SIZE);
+                    if(distance > position.dst(tmp2)){
+                        distance = position.dst(tmp2);
+                        tmp = tmp2;
+                    }
+                }
+            }
+        }
+        return tmp;
     }
 
     public Building getBuildingEntrance(int cellX, int cellY) {

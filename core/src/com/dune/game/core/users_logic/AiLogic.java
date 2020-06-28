@@ -2,7 +2,9 @@ package com.dune.game.core.users_logic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.Vector2;
 import com.dune.game.core.BattleMap;
+import com.dune.game.core.Building;
 import com.dune.game.core.GameController;
 import com.dune.game.core.units.AbstractUnit;
 import com.dune.game.core.units.BattleTank;
@@ -17,6 +19,7 @@ public class AiLogic extends BaseLogic {
     private float timer;
 
     private List<BattleTank> tmpAiBattleTanks;
+    private List<Harvester> tmpAiHarvesters;
     private List<Harvester> tmpPlayerHarvesters;
     private List<BattleTank> tmpPlayerBattleTanks;
 
@@ -27,6 +30,7 @@ public class AiLogic extends BaseLogic {
         this.unitsMaxCount = 100;
         this.ownerType = Owner.AI;
         this.tmpAiBattleTanks = new ArrayList<>();
+        this.tmpAiHarvesters = new ArrayList<>();
         this.tmpPlayerHarvesters = new ArrayList<>();
         this.tmpPlayerBattleTanks = new ArrayList<>();
         this.timer = 10000.0f;
@@ -37,11 +41,28 @@ public class AiLogic extends BaseLogic {
         if (timer > 2.0f) {
             timer = 0.0f;
             gc.getUnitsController().collectTanks(tmpAiBattleTanks, gc.getUnitsController().getAiUnits(), UnitType.BATTLE_TANK);
+            gc.getUnitsController().collectTanks(tmpAiHarvesters, gc.getUnitsController().getAiUnits(), UnitType.HARVESTER);
+
             gc.getUnitsController().collectTanks(tmpPlayerHarvesters, gc.getUnitsController().getPlayerUnits(), UnitType.HARVESTER);
             gc.getUnitsController().collectTanks(tmpPlayerBattleTanks, gc.getUnitsController().getPlayerUnits(), UnitType.BATTLE_TANK);
             for (int i = 0; i < tmpAiBattleTanks.size(); i++) {
                 BattleTank aiBattleTank = tmpAiBattleTanks.get(i);
                 aiBattleTank.commandAttack(findNearestTarget(aiBattleTank, tmpPlayerBattleTanks));
+            }
+
+            BattleMap map = gc.getMap();
+
+            for (int i = 0; i < tmpAiHarvesters.size(); i++) {
+                Harvester aiHarvester = tmpAiHarvesters.get(i);
+                if(!aiHarvester.isHarvesting()){
+                    aiHarvester.commandMoveTo( gc.getMap().getClosestResourceCell(aiHarvester.getPosition()), true );
+                    aiHarvester.setHarvesting(true);
+                }
+                if(aiHarvester.getContainer() >= 2) {
+                    aiHarvester.setHarvesting(false);
+                    aiHarvester.commandMoveTo(new Vector2(14 * map.getCellSize(), 8 * map.getCellSize()), true);
+                }
+
             }
         }
     }
