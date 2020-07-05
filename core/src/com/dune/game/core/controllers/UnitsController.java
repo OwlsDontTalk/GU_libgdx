@@ -41,11 +41,11 @@ public class UnitsController {
         this.units = new ArrayList<>();
         this.playerUnits = new ArrayList<>();
         this.aiUnits = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             createBattleTank(gc.getPlayerLogic(), MathUtils.random(0, gc.getMap().getSizeX() - 1) * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2, MathUtils.random(0, gc.getMap().getSizeY() - 1) * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2);
             createHarvester(gc.getPlayerLogic(), MathUtils.random(0, gc.getMap().getSizeX() - 1) * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2, MathUtils.random(0, gc.getMap().getSizeY() - 1) * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2);
         }
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 3; i++) {
             createBattleTank(gc.getAiLogic(), MathUtils.random(0, gc.getMap().getSizeX() - 1) * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2, MathUtils.random(0, gc.getMap().getSizeY() - 1) * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2);
             createHarvester(gc.getAiLogic(), MathUtils.random(0, gc.getMap().getSizeX() - 1) * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2, MathUtils.random(0, gc.getMap().getSizeY() - 1) * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2);
         }

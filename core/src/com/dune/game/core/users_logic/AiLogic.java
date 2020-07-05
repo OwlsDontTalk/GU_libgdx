@@ -2,16 +2,19 @@ package com.dune.game.core.users_logic;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.dune.game.core.BattleMap;
 import com.dune.game.core.Building;
 import com.dune.game.core.GameController;
+import com.dune.game.core.Projectile;
 import com.dune.game.core.units.AbstractUnit;
 import com.dune.game.core.units.BattleTank;
 import com.dune.game.core.units.Harvester;
 import com.dune.game.core.units.types.Owner;
 import com.dune.game.core.units.types.UnitType;
 
+import java.security.spec.RSAOtherPrimeInfo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,21 +53,42 @@ public class AiLogic extends BaseLogic {
                 aiBattleTank.commandAttack(findNearestTarget(aiBattleTank, tmpPlayerBattleTanks));
             }
 
-            BattleMap map = gc.getMap();
-
             for (int i = 0; i < tmpAiHarvesters.size(); i++) {
                 Harvester aiHarvester = tmpAiHarvesters.get(i);
-                if(!aiHarvester.isHarvesting()){
-                    aiHarvester.commandMoveTo( gc.getMap().getClosestResourceCell(aiHarvester.getPosition()), true );
-                    aiHarvester.setHarvesting(true);
-                }
-                if(aiHarvester.getContainer() >= 2) {
-                    aiHarvester.setHarvesting(false);
-                    aiHarvester.commandMoveTo(new Vector2(14 * map.getCellSize(), 8 * map.getCellSize()), true);
-                }
 
+                if(aiHarvester.getContainer() == 0) {
+                    goHarvest(aiHarvester);
+                }
+                if(aiHarvester.getContainer() >= 3){
+                    goBase(aiHarvester);
+                }
             }
         }
+    }
+
+    private void goBase(Harvester aiHarvester) {
+        BattleMap map = gc.getMap();
+        Vector2 base = new Vector2(14 * map.getCellSize(), 7 * map.getCellSize());
+        aiHarvester.commandMoveTo(base, true);
+    }
+
+    private void goHarvest(Harvester aiHarvester){
+        BattleMap map = gc.getMap();
+        Vector2 dist = map.getClosestResourceCell(aiHarvester.getPosition());
+
+        if(!anyHarvesterNearTarget(dist) ) {
+           aiHarvester.commandMoveTo(dist, true);
+        }
+
+        if(anyHarvesterNearTarget(dist)) {
+            goSomewhereRandom(aiHarvester);
+
+        }
+    }
+
+    private void goSomewhereRandom(Harvester aiHarvester) {
+        System.out.println( aiHarvester + " i need to go somewhere else");
+        aiHarvester.commandMoveTo( new Vector2(MathUtils.random(10, 1270), MathUtils.random(10, 710)), true);
     }
 
     public <T extends AbstractUnit> T findNearestTarget(AbstractUnit currentTank, List<T> possibleTargetList) {
@@ -79,5 +103,15 @@ public class AiLogic extends BaseLogic {
             }
         }
         return target;
+    }
+
+    private boolean anyHarvesterNearTarget(Vector2 trgt){
+        for (int i = 0; i < tmpAiHarvesters.size(); i++) {
+            Harvester aiHarvester = tmpAiHarvesters.get(i);
+
+            if(Math.abs(trgt.dst(aiHarvester.getPosition()))< 40.0f)
+                return true;
+            }
+        return false;
     }
 }

@@ -151,7 +151,7 @@ public class BattleMap implements GameMap {
                 cells[i][j].buildingCore = building;
                 if (building != null) {
                     blockAirCell(i, j);
-                    blockGroundCell(i, j);
+                    //blockGroundCell(i, j);
                 } else {
                     unblockAirCell(i, j);
                     unblockGroundCell(i, j);
@@ -226,11 +226,11 @@ public class BattleMap implements GameMap {
 
         for (int i = 0; i < COLUMNS_COUNT; i++) {
             for (int j = 0; j < ROWS_COUNT; j++) {
-                if(cells[i][j].resource > 0){
-                    Vector2 tmp2 = new Vector2( i * CELL_SIZE, j * CELL_SIZE);
-                    if(distance > position.dst(tmp2)){
-                        distance = position.dst(tmp2);
-                        tmp = tmp2;
+                if(cells[i][j].resource >= 3){
+                    Vector2 tmpPos = new Vector2( i * CELL_SIZE, j * CELL_SIZE);
+                    if(distance > position.dst(tmpPos)){
+                        distance = position.dst(tmpPos);
+                        tmp = tmpPos;
                     }
                 }
             }

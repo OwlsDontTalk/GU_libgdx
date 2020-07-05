@@ -8,16 +8,6 @@ import com.dune.game.core.users_logic.BaseLogic;
 import com.dune.game.screens.utils.Assets;
 
 public class Harvester extends AbstractUnit {
-    private boolean harvesting;
-    public void setHarvesting(boolean harvesting) {
-        this.harvesting = harvesting;
-    }
-
-    public boolean isHarvesting() {
-        return harvesting;
-    }
-
-
 
     public Harvester(GameController gc) {
         super(gc);
@@ -30,7 +20,6 @@ public class Harvester extends AbstractUnit {
         this.weapon = new Weapon(4.0f, 1);
         this.hpMax = 500;
         this.unitType = UnitType.HARVESTER;
-        this.harvesting = false;
     }
 
     @Override
@@ -82,5 +71,6 @@ public class Harvester extends AbstractUnit {
             baseLogic.addMoney(container * 100);
             container = 0;
         }
+
     }
 }

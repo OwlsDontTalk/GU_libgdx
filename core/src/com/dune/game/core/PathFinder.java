@@ -82,7 +82,7 @@ public class PathFinder {
                 CellNode next = current.neighbors.get(i);
                 int newCost = current.cost + gameMap.getCellCost(next.x, next.y);
                 if (current.x != next.x && current.y != next.y) {
-                    newCost++; // todo проверить бОльшую стоимость диагоналей
+                    newCost++;
                 }
 
                 if (!next.processed && (next.from == null || newCost < next.cost)) {
