@@ -1,2 +1,2 @@
 # GU_libgdx
-educational project
+https://geekbrains.ru/ - libGDX game education project + homework repo
